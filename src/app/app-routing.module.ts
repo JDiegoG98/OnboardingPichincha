@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppRoutes } from './config/routes.enum';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: AppRoutes.login,
     pathMatch: 'full'
   },
   {
-    path: 'register',
+    path: AppRoutes.register,
     component: RegisterComponent
   },
   {
-    path: 'login',
+    path: AppRoutes.login,
     component: LoginComponent
   }
 ];

@@ -1,18 +1,46 @@
 <div class="container-center">
   <div class="form-container">
-    <h3>Registrarse</h3>
-    <hr>
-    <form class="register-form">
-      <pichincha-input id-element="username" label="Nombre de usuario" placeholder="Ej: jdiegog98" [fullWidth]="true">
-      </pichincha-input>
-      <pichincha-input id-element="email" label="Correo electrónico" placeholder="Ej: name@example.com"
-        [fullWidth]="true">
-      </pichincha-input>
-      <pichincha-input id-element="password" label="Contraseña" type="password" [fullWidth]="true">
-      </pichincha-input>
-      <pichincha-input id-element="passwordConfirm" label="Confirmar Contraseña" type="password" [fullWidth]="true">
-      </pichincha-input>
-      <h4>Categorías</h4>
-    </form>
+    <div class="form-section">
+      <h3>Registrarse</h3>
+      <hr>
+      <form class="register-form" [formGroup]="registerForm">
+        <pichincha-input appInputAccessor formControlName="username" id-element="username" label="Nombre de usuario"
+          placeholder="Ej: jdiegog98" [fullWidth]="true" [showIconStatus]="true"
+          [errorHelper]="checkUsernameError()">
+        </pichincha-input>
+        <pichincha-input appInputAccessor formControlName="email" id-element="email" label="Correo electrónico"
+          placeholder="Ej: name@example.com" [fullWidth]="true" [showIconStatus]="true"
+          [errorHelper]="'Correo es requerido'">
+        </pichincha-input>
+        <pichincha-input appInputAccessor formControlName="password" id-element="password" label="Contraseña"
+          type="password" [fullWidth]="true" [showIconStatus]="true"
+          [errorHelper]="checkPasswordError()">
+        </pichincha-input>
+        <pichincha-input appInputAccessor formControlName="passwordConfirm" id-element="passwordConfirm"
+          label="Confirmar Contraseña" type="password" [fullWidth]="true" [showIconStatus]="true"
+          [errorHelper]="'Contraseñas no coinciden'">
+        </pichincha-input>
+        <div formGroupName="categories">
+          <h4>Categorías</h4>
+          <div *ngFor="let category of categoriesList">
+            <pichincha-check-box (click)="onClickCheckbox(category.id)" id-element="category-{{category.id}}"
+              disabled="false" value="{{category.id}}">
+              <pichincha-typography variant="bodyText">
+                {{category.description}}
+              </pichincha-typography>
+            </pichincha-check-box>
+          </div>
+          <pichincha-typography *ngIf="categories!.invalid && categories!.touched" variant="captionText" color="error">
+            Debe seleccionar al menos 3 categorías
+          </pichincha-typography>
+        </div>
+      </form>
+    </div>
+    <div class="button-section">
+      <a routerLink="/login">Iniciar sesión</a>
+      <pichincha-button (click)="onRegister()" size="medium" id="register" color="primary" [loading]="loading">
+        Registrar
+      </pichincha-button>
+    </div>
   </div>
 </div>
