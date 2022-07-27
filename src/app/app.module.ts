@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputValueAcessorDirective } from './directives/input-value-accessor.directive';
 import { LibraryComponent } from './views/library/library.component';
+import { BooksComponent } from './components/books/books.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LibraryComponent } from './views/library/library.component';
     RegisterComponent,
     LoginComponent,
     InputValueAcessorDirective,
-    LibraryComponent
+    LibraryComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,

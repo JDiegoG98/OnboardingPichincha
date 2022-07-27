@@ -1,7 +1,7 @@
 <div class="container-center">
   <div class="form-container">
     <div class="form-section">
-      <h3>Registrarse</h3>
+      <pichincha-typography variant="h3" weight="bold" color="black">Registrarse</pichincha-typography>
       <hr>
       <form class="register-form" [formGroup]="registerForm">
         <pichincha-input appInputAccessor formControlName="username" id-element="username" label="Nombre de usuario"
@@ -21,7 +21,7 @@
           [errorHelper]="'Contraseñas no coinciden'">
         </pichincha-input>
         <div formGroupName="categories">
-          <h4>Categorías</h4>
+          <pichincha-typography variant="h3" color="black">Categorías</pichincha-typography>
           <div *ngFor="let category of categoriesList">
             <pichincha-check-box (click)="onClickCheckbox(category.id)" id-element="category-{{category.id}}"
               disabled="false" value="{{category.id}}">

@@ -1,3 +1,5 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LibraryComponent } from './library.component';
@@ -8,7 +10,11 @@ describe('LibraryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LibraryComponent ]
+      declarations: [ LibraryComponent ],
+      imports: [
+        HttpClientTestingModule
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   });

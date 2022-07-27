@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { InputValueAcessorDirective } from '../../directives/input-value-accessor.directive';
 import { UsersService } from '../../services/users.service';
@@ -31,7 +32,8 @@ describe('LoginComponent', () => {
       declarations: [LoginComponent, InputValueAcessorDirective],
       imports: [
         ReactiveFormsModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        RouterTestingModule
       ],
       providers: [{ provide: UsersService, useClass: mockUsersService }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]

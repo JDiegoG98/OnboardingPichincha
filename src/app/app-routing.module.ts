@@ -4,6 +4,7 @@ import { AppRoutes } from './config/routes.enum';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LibraryComponent } from './views/library/library.component';
+import { BooksComponent } from './components/books/books.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,15 @@ const routes: Routes = [
     path: AppRoutes.LIBRARY,
     component: LibraryComponent,
     children: [
-
+      {
+        path: '',
+        redirectTo: AppRoutes.BOOKS,
+        pathMatch: 'full'
+      },
+      {
+        path: AppRoutes.BOOKS,
+        component: BooksComponent
+      }
     ]
   }
 ];

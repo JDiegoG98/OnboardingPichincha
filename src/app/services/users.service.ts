@@ -11,7 +11,10 @@ import { User, UserInfo } from '../interfaces/user.interface';
   providedIn: 'root'
 })
 export class UsersService {
-  loggedUser!: UserInfo;
+  loggedUser: UserInfo = {
+    userId: 'default',
+    username: 'default'
+  };
 
   constructor(private http: HttpClient) { }
 
