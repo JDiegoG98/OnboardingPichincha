@@ -2,13 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Endpoints } from '../config/endpoints.enum';
+import { Credentials } from '../interfaces/credentials.interface';
 import { ExistsResponse } from '../interfaces/exists-response.interface';
-import { User } from '../interfaces/user.interface';
+import { LoginResponse } from '../interfaces/login-response.interface';
+import { User, UserInfo } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
+  loggedUser!: UserInfo;
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +21,9 @@ export class UsersService {
 
   createUser(user: User){
     return this.http.post(environment.apiUrl + Endpoints.CREATE_USER, user);
+  }
+
+  login(credentials: Credentials){
+    return this.http.post<LoginResponse>(environment.apiUrl + Endpoints.LOGIN, credentials);
   }
 }

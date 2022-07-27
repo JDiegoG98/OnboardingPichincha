@@ -2,7 +2,9 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { environment } from '../../environments/environment';
 import { Endpoints } from '../config/endpoints.enum';
+import { Credentials } from '../interfaces/credentials.interface';
 import { ExistsResponse } from '../interfaces/exists-response.interface';
+import { LoginResponse } from '../interfaces/login-response.interface';
 import { User } from '../interfaces/user.interface';
 
 import { UsersService } from './users.service';
@@ -60,6 +62,30 @@ describe('UsersService', () => {
     });
 
     const req = http.expectOne(environment.apiUrl + Endpoints.CREATE_USER);
+    expect(req.request.method).toBe("POST");
+    req.flush(mockResponse);
+  });
+
+  it('should request login on login', () => {
+    const mockCredentials: Credentials =
+    {
+      username: 'test',
+      password: 'test'
+    };
+    const mockResponse: LoginResponse = {
+      user: {
+        userId: 'test',
+        username: 'test'
+      },
+      access_token: 'test',
+      tokenType: 'test'
+    }
+    service.login(mockCredentials).subscribe((res: any) => {
+      expect(res.access_token).toBe('test');
+      expect(res.user.username).toBe('test');
+    });
+
+    const req = http.expectOne(environment.apiUrl + Endpoints.LOGIN);
     expect(req.request.method).toBe("POST");
     req.flush(mockResponse);
   });

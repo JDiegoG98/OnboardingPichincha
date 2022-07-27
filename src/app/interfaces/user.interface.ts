@@ -6,3 +6,8 @@ export interface User{
   password: string;
   category: Category[];
 }
+
+export interface UserInfo{
+  username: string;
+  userId: string;
+}

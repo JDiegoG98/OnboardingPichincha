@@ -3,20 +3,28 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutes } from './config/routes.enum';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LibraryComponent } from './views/library/library.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: AppRoutes.login,
+    redirectTo: AppRoutes.LOGIN,
     pathMatch: 'full'
   },
   {
-    path: AppRoutes.register,
+    path: AppRoutes.REGISTER,
     component: RegisterComponent
   },
   {
-    path: AppRoutes.login,
+    path: AppRoutes.LOGIN,
     component: LoginComponent
+  },
+  {
+    path: AppRoutes.LIBRARY,
+    component: LibraryComponent,
+    children: [
+      
+    ]
   }
 ];
 

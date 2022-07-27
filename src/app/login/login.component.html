@@ -1,1 +1,27 @@
-<a routerLink="/register">Registrar</a>
+<div class="container-center">
+  <div class="form-container">
+    <div class="form-section">
+      <h3>Iniciar Sesión</h3>
+      <hr>
+      <form class="login-form" [formGroup]="loginForm">
+        <pichincha-input appInputAccessor formControlName="username" id-element="username" label="Nombre de usuario"
+          placeholder="Ej: jdiegog98" [fullWidth]="true" [showIconStatus]="true"
+          [errorHelper]="checkUsernameError()">
+        </pichincha-input>
+        <pichincha-input appInputAccessor formControlName="password" id-element="password" label="Contraseña"
+          type="password" [fullWidth]="true" [showIconStatus]="true"
+          [errorHelper]="'Contraseña es requerida'">
+        </pichincha-input>
+        <pichincha-typography *ngIf="errorMessage" variant="captionText" color="error">
+          {{errorMessage}}
+        </pichincha-typography>
+      </form>
+    </div>
+    <div class="button-section">
+      <a routerLink="/register">Registrate aquí</a>
+      <pichincha-button (click)="onLogin()" size="medium" id="register" color="primary" [loading]="loading">
+        Iniciar Sesión
+      </pichincha-button>
+    </div>
+  </div>
+</div>

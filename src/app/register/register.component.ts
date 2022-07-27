@@ -124,7 +124,10 @@ export class RegisterComponent implements OnInit {
         category: this.categoriesList.filter(category => this.categories.get(category.id.toString())!.value === true)
       }
       this.usersService.createUser(user).subscribe({
-        next: res => this.loading = false,
+        next: res => {
+          this.loading = false;
+          alert('Usuario creado exitosamente');
+        },
         error: error => console.error(error)
       });
     } else {

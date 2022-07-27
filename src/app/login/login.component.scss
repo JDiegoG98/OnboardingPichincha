@@ -1,0 +1,24 @@
+.form-container{
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 30%;
+  margin-top: 5%;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section{
+  padding: 5%;
+}
+
+.button-section{
+  background-color: whitesmoke;
+  border-top: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5%;
+}
