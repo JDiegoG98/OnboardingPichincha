@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { lastValueFrom } from 'rxjs';
-import { Category } from '../interfaces/categories.interface';
-import { User } from '../interfaces/user.interface';
-import { CategoriesService } from '../services/categories.service';
-import { UsersService } from '../services/users.service';
-import { UsernameExistsValidator } from '../validators/username-exists.validator';
+import { Category } from '../../interfaces/categories.interface';
+import { User } from '../../interfaces/user.interface';
+import { CategoriesService } from '../../services/categories.service';
+import { UsersService } from '../../services/users.service';
+import { UsernameExistsValidator } from '../../validators/username-exists.validator';
 
 @Component({
   selector: 'app-register',

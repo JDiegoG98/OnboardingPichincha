@@ -3,8 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
-import { InputValueAcessorDirective } from '../directives/input-value-accessor.directive';
-import { UsersService } from '../services/users.service';
+import { InputValueAcessorDirective } from '../../directives/input-value-accessor.directive';
+import { UsersService } from '../../services/users.service';
 
 import { LoginComponent } from './login.component';
 

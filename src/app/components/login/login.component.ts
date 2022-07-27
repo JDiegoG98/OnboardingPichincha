@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AppRoutes } from '../config/routes.enum';
-import { UsersService } from '../services/users.service';
-import { UsernameNotExistsValidator } from '../validators/username-exists.validator';
+import { AppRoutes } from '../../config/routes.enum';
+import { UsersService } from '../../services/users.service';
+import { UsernameNotExistsValidator } from '../../validators/username-exists.validator';
 
 @Component({
   selector: 'app-login',

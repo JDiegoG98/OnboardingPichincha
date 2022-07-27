@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutes } from './config/routes.enum';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { LibraryComponent } from './views/library/library.component';
 
 const routes: Routes = [
@@ -23,7 +23,7 @@ const routes: Routes = [
     path: AppRoutes.LIBRARY,
     component: LibraryComponent,
     children: [
-      
+
     ]
   }
 ];

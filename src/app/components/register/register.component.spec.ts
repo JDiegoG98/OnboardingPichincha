@@ -3,12 +3,12 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { InputValueAcessorDirective } from '../directives/input-value-accessor.directive';
+import { InputValueAcessorDirective } from '../../directives/input-value-accessor.directive';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CategoriesService } from '../services/categories.service';
-import { Category } from '../interfaces/categories.interface';
+import { CategoriesService } from '../../services/categories.service';
+import { Category } from '../../interfaces/categories.interface';
 import { of } from 'rxjs';
-import { UsersService } from '../services/users.service';
+import { UsersService } from '../../services/users.service';
 
 const mockCategories: Category[] = [
   {
