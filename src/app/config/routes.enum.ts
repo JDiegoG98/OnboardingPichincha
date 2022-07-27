@@ -2,5 +2,6 @@ export enum AppRoutes{
   LOGIN = "login",
   REGISTER = 'register',
   LIBRARY = 'library',
-  BOOKS = 'books'
+  BOOKS = 'books',
+  NEW_BOOK = 'new-book'
 }

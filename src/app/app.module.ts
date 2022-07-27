@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputValueAcessorDirective } from './directives/input-value-accessor.directive';
 import { LibraryComponent } from './views/library/library.component';
 import { BooksComponent } from './components/books/books.component';
+import { BookVisualizerComponent } from './components/book-visualizer/book-visualizer.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { BooksComponent } from './components/books/books.component';
     LoginComponent,
     InputValueAcessorDirective,
     LibraryComponent,
-    BooksComponent
+    BooksComponent,
+    BookVisualizerComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,

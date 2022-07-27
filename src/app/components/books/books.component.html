@@ -1,1 +1,17 @@
-<p>books works!</p>
+<div class="container">
+  <div class="title-section">
+    <pichincha-typography variant="h2" weight="bold" color="black">Tus Libros</pichincha-typography>
+    <pichincha-button (click)="onAddBook()" size="medium" id="register" color="secondary">
+      Agregar Libro
+    </pichincha-button>
+  </div>
+  <div class="title-section">
+    <pichincha-input (ikeyup)="onSearch($any($event))" class="input" placeholder="Búsqueda, Ej: React, Angular" id-element="search" [fullWidth]="true">
+    </pichincha-input>
+    <pichincha-select class="input" id-element="select-category" size="small" placeholder="Selecciona una categoría"
+      [items]="categories" (clickedItem)="handleSelectedItem($any($event))"></pichincha-select>
+  </div>
+  <div class="book-section">
+    <app-book-visualizer *ngFor="let book of books" [imgUrl]="book.image"></app-book-visualizer>
+  </div>
+</div>
