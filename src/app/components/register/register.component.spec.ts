@@ -4,7 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputValueAcessorDirective } from '../../directives/input-value-accessor.directive';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../interfaces/categories.interface';
 import { of } from 'rxjs';
@@ -51,7 +51,7 @@ describe('RegisterComponent', () => {
         { provide: CategoriesService, useClass: mockCategoriesService },
         { provide: UsersService, useClass: mockUsersService}
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   });

@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LibraryComponent } from './views/library/library.component';
 import { BooksComponent } from './components/books/books.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
+import { BookInfoComponent } from './components/book-info/book-info.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: AppRoutes.NEW_BOOK,
         component: AddBookComponent
+      },
+      {
+        path: ':bookId',
+        component: BookInfoComponent
       }
     ]
   }

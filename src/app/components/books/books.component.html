@@ -12,6 +12,6 @@
       [items]="categories" (clickedItem)="handleSelectedItem($any($event))"></pichincha-select>
   </div>
   <div class="book-section">
-    <app-book-visualizer *ngFor="let book of books" [imgUrl]="book.image"></app-book-visualizer>
+    <app-book-visualizer *ngFor="let book of books" [imgUrl]="book.image" (click)="onSelectBook(book.id)"></app-book-visualizer>
   </div>
 </div>

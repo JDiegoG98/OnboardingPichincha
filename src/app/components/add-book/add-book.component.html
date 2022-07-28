@@ -1,1 +1,63 @@
-<p>add-book works!</p>
+<div class="container">
+  <div class="row">
+    <pichincha-typography variant="h2" weight="bold" color="black">Registro Libro</pichincha-typography>
+  </div>
+  <form [formGroup]="newBookForm">
+    <div class="row">
+      <pichincha-input appInputAccessor formControlName="title" class="input" label="Nombre de libro"
+        placeholder="Ej: Angular Basics" id-element="book-name" [fullWidth]="true"
+        [errorHelper]="'Nombre de libro es requerido'">
+      </pichincha-input>
+      <pichincha-input appInputAccessor formControlName="author" class="input" label="Nombre del autor"
+        placeholder="Ej: Juan Diego Garzón" id-element="author-name" [fullWidth]="true"
+        [errorHelper]="'Nombre del autor es requerido'">
+      </pichincha-input>
+    </div>
+    <div class="row">
+      <pichincha-input appInputAccessor formControlName="url" class="input" label="URL del libro"
+        placeholder="Ej: https://libro.com" id-element="book-url" [fullWidth]="true"
+        [errorHelper]="checkErrorMessage(url!)">
+      </pichincha-input>
+      <pichincha-input appInputAccessor formControlName="image" class="input" label="Imagen de portada"
+        placeholder="Ej: https://imagen.com" id-element="book-image" [fullWidth]="true"
+        [errorHelper]="checkErrorMessage(image!)">
+      </pichincha-input>
+    </div>
+    <div class="row">
+      <pichincha-input appInputAccessor formControlName="resume" class="input" label="Resumen del libro"
+        placeholder="Ej: ..." id-element="book-summary" [fullWidth]="true" [errorHelper]="'Resumen es requerido'">
+      </pichincha-input>
+      <pichincha-check-box class="checkbox" id-element="book-public" (click)="onClickCheckboxPublic()">
+        <pichincha-typography variant="bodyText">
+          Publicar
+        </pichincha-typography>
+      </pichincha-check-box>
+    </div>
+    <div class="row">
+      <pichincha-typography variant="h3" weight="bold" color="black">Categorías</pichincha-typography>
+    </div>
+    <div class="row">
+      <div *ngFor="let category of categoriesList">
+        <pichincha-check-box (click)="onClickCheckbox(category.id)" id-element="category-{{category.id}}"
+          disabled="false" value="{{category.id}}">
+          <pichincha-typography variant="bodyText">
+            {{category.description}}
+          </pichincha-typography>
+        </pichincha-check-box>
+      </div>
+    </div>
+    <div class="row">
+      <pichincha-typography *ngIf="category!.invalid && category!.touched" variant="captionText" color="error">
+        Debe seleccionar al menos 1 categoría
+      </pichincha-typography>
+    </div>
+    <div class="row-right">
+      <pichincha-button class="button" (click)="onCancel()" size="medium" id="register" color="secondary">
+        Cancelar
+      </pichincha-button>
+      <pichincha-button (click)="onRegister()" size="medium" id="register" color="primary" [loading]="loading">
+        Registrar
+      </pichincha-button>
+    </div>
+  </form>
+</div>

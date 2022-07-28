@@ -1,10 +1,20 @@
 .book-visualizer{
   background-color: whitesmoke;
-  margin-right: 5%;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
+  padding: 10%;
+  width: 250px;
+  height: 300px;
 
   :hover{
     opacity: 50%;
     cursor: pointer;
   }
+}
+
+img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }

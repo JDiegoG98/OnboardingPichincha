@@ -19,11 +19,16 @@ export class BooksService {
 
   getBooksByOwner() {
     const headers = this.getHeaders();
-    return this.http.get<Book[]>(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER, { headers });
+    return this.http.get<Book[]>(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE, { headers });
   }
 
   filterBooks(filters: Filter) {
     const headers = this.getHeaders();
     return this.http.post<FilteredBooksResponse>(environment.apiUrl + Endpoints.FILTER_BOOKS, filters, { headers });
+  }
+
+  createBook(book: Book) {
+    const headers = this.getHeaders();
+    return this.http.post(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE, book, { headers });
   }
 }

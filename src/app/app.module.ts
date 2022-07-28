@@ -12,6 +12,7 @@ import { LibraryComponent } from './views/library/library.component';
 import { BooksComponent } from './components/books/books.component';
 import { BookVisualizerComponent } from './components/book-visualizer/book-visualizer.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
+import { BookInfoComponent } from './components/book-info/book-info.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     LibraryComponent,
     BooksComponent,
     BookVisualizerComponent,
-    AddBookComponent
+    AddBookComponent,
+    BookInfoComponent
   ],
   imports: [
     BrowserModule,

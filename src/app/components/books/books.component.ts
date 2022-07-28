@@ -59,6 +59,10 @@ export class BooksComponent implements OnInit {
     this.router.navigateByUrl(`${AppRoutes.LIBRARY}/${AppRoutes.NEW_BOOK}`);
   }
 
+  onSelectBook(id: string){
+    this.router.navigateByUrl(`${AppRoutes.LIBRARY}/${id}`);
+  }
+
   onSearch(event: CustomEvent) {
     this.searchTerm = event.detail.target.value;
     if (event.detail.target.value.length > 0) {

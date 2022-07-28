@@ -80,17 +80,15 @@ export class RegisterComponent implements OnInit {
   checkUsernameError() {
     if (this.username!.errors && this.username!.errors['required']) {
       return 'Usuario es requerido';
-    } else {
-      return 'Usuario no disponible'
     }
+    return 'Usuario no disponible'
   }
 
   checkPasswordError() {
     if (this.password!.errors && this.password!.errors['required']) {
       return 'Contraseña es requerida';
-    } else {
-      return 'Contraseña debe tener 8 caracteres, mayúscula, número y especial'
     }
+    return 'Contraseña debe tener 8 caracteres, mayúscula, número y especial'
   }
 
   checkAtLeastThreeSelected() {
@@ -115,24 +113,25 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-    if (this.registerForm.valid) {
-      this.loading = true;
-      const user: User = {
-        name: this.username!.value,
-        email: this.email!.value,
-        password: this.password!.value,
-        category: this.categoriesList.filter(category => this.categories.get(category.id.toString())!.value === true)
-      }
-      this.usersService.createUser(user).subscribe({
-        next: res => {
-          this.loading = false;
-          alert('Usuario creado exitosamente');
-        },
-        error: error => console.error(error)
-      });
-    } else {
+    if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
       this.registerForm.markAsDirty();
+      return;
     }
+    this.loading = true;
+    const formValue = this.registerForm.getRawValue();
+    const user: User = {
+      name: formValue.username,
+      email: formValue.email,
+      password: formValue.password,
+      category: this.categoriesList.filter(category => this.categories.get(category.id.toString())!.value === true)
+    }
+    this.usersService.createUser(user).subscribe({
+      next: res => {
+        this.loading = false;
+        alert('Usuario creado exitosamente');
+      },
+      error: error => console.error(error)
+    });
   }
 }

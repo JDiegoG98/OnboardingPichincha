@@ -1,0 +1,29 @@
+.container{
+  padding: 2% 10%;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+.row-right{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+.input{
+  min-width: 49%;
+}
+
+.checkbox{
+  margin-right: 42%;
+}
+
+.button{
+  margin-right: 1%;
+}
