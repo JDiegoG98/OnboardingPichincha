@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookVisualizerComponent } from './book-visualizer.component';
@@ -10,7 +10,7 @@ describe('BookVisualizerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ BookVisualizerComponent ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });

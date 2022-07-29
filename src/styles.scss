@@ -10,3 +10,24 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+.row-left{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+.row-right{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1%;
+}

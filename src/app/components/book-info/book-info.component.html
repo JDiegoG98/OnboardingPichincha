@@ -1,1 +1,57 @@
-<p>book-info works!</p>
+<div class="container">
+  <div class="row-left">
+    <pichincha-button class="button" (click)="onReturn()" size="medium" id="register" color="secondary">
+      Volver
+    </pichincha-button>
+    <pichincha-button *ngIf="book?.userRegister == userId" (click)="onEdit()" size="medium" id="register"
+      color="primary">
+      Editar
+    </pichincha-button>
+  </div>
+  <div class="lds-dual-ring" *ngIf="loading"></div>
+  <div class="row-left" *ngIf="!loading">
+    <img [src]="book?.image" alt="">
+    <div class="info-container">
+      <div class="row">
+        <pichincha-typography class="title" variant="title" weight="bold" color="black">
+          Título
+        </pichincha-typography>
+        <pichincha-typography variant="bodyText" color="black">
+          {{book?.title}}
+        </pichincha-typography>
+      </div>
+      <div class="row">
+        <pichincha-typography class="title" variant="title" weight="bold" color="black">
+          Autor
+        </pichincha-typography>
+        <pichincha-typography variant="bodyText" color="black">
+          {{book?.author}}
+        </pichincha-typography>
+      </div>
+      <div class="row">
+        <pichincha-typography class="title" variant="title" weight="bold" color="black">
+          URL del libro
+        </pichincha-typography>
+        <pichincha-typography variant="bodyText" color="black">
+          {{book?.url}}
+        </pichincha-typography>
+      </div>
+      <div class="row">
+        <pichincha-typography class="title" variant="title" weight="bold" color="black">
+          Resumen
+        </pichincha-typography>
+        <pichincha-typography variant="bodyText" color="black">
+          {{book?.resume}}
+        </pichincha-typography>
+      </div>
+      <div class="row">
+        <pichincha-typography class="title" variant="title" weight="bold" color="black">
+          Categorías
+        </pichincha-typography>
+        <pichincha-typography *ngFor="let category of categories" variant="bodyText" color="black">
+          {{category.description}}
+        </pichincha-typography>
+      </div>
+    </div>
+  </div>
+</div>
