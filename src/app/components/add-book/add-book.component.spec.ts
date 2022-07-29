@@ -10,7 +10,8 @@ import { AddBookComponent } from './add-book.component';
 import { of } from 'rxjs';
 import { CategoriesService } from '../../services/categories.service';
 import { BooksService } from '../../services/books.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Book } from '../../interfaces/book.interface';
 
 const mockCategories: Category[] = [
   {
@@ -31,8 +32,24 @@ class mockCategoriesService {
   getCategories() { return of(mockCategories) }
 }
 
+const mockBook: Book = {
+  id: "2ac4ly00oen",
+  public: true,
+  author: "Unknow",
+  resume: "",
+  title: "Learning Angular, 2nd Edition",
+  subtitle: "A Hands-On Guide to Angular 2 and Angular 4",
+  image: "https://itbook.store/img/books/9780134576978.png",
+  url: "https://itbook.store/books/9780134576978",
+  category: [
+    57
+  ],
+  userRegister: "w7qfsa5f21"
+}
+
 class mockBooksService {
   createBook() { return of(true) }
+  getBookById() { return of(mockBook) }
 }
 
 describe('AddBookComponent', () => {
@@ -41,6 +58,7 @@ describe('AddBookComponent', () => {
   let categoriesService: CategoriesService;
   let booksService: BooksService;
   let router: Router;
+  let route: ActivatedRoute;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -65,6 +83,7 @@ describe('AddBookComponent', () => {
     categoriesService = TestBed.inject(CategoriesService);
     booksService = TestBed.inject(BooksService);
     router = TestBed.inject(Router);
+    route = TestBed.inject(ActivatedRoute);
     jest.resetAllMocks();
     fixture.detectChanges();
   });
@@ -74,9 +93,16 @@ describe('AddBookComponent', () => {
   });
 
   it('should getCategories from request and store them', async () => {
-    await component.getCategories();
+    await component.getCategoriesAndBook();
     expect(categoriesService.categories).toEqual(mockCategories);
     expect(component.categoriesList).toEqual(categoriesService.categories);
+  });
+
+  it('should get bookToEdit if bookId', async() => {
+    jest.spyOn(route.snapshot.paramMap, 'get').mockReturnValue('test');
+    jest.spyOn(booksService, 'getBookById');
+    await component.getCategoriesAndBook();
+    expect(booksService.getBookById).toHaveBeenCalled();
   });
 
   it('should return invalid format message if url invalid', () => {

@@ -1,5 +1,11 @@
 <div class="header">
-  <pichincha-typography variant="h3" color="black">Biblioteca</pichincha-typography>
+  <div class="row titles-section">
+    <pichincha-typography variant="h3" class="title-button" color="black" (click)="onClickLibrary()">Biblioteca
+    </pichincha-typography>
+    <pichincha-typography variant="bodyText" class="title-button" color="black" (click)="onClickMyBooks()">Mis
+      libros
+    </pichincha-typography>
+  </div>
   <pichincha-typography variant="title" weight="bold" color="black">{{username}}</pichincha-typography>
 </div>
 <router-outlet></router-outlet>

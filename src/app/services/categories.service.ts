@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Endpoints } from '../config/endpoints.enum';
 import { Category } from '../interfaces/categories.interface';
@@ -12,7 +13,7 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) { }
 
-  getCategories(){
+  getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(environment.apiUrl + Endpoints.GET_CATEGORIES);
   }
 }

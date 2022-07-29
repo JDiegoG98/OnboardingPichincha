@@ -49,6 +49,6 @@ export class BookInfoComponent implements OnInit {
   }
 
   onEdit(){
-    this.router.navigateByUrl(`${AppRoutes.LIBRARY}/${AppRoutes.NEW_BOOK}`);
+    this.router.navigateByUrl(`${AppRoutes.LIBRARY}/${AppRoutes.NEW_BOOK}/${this.book!.id}`);
   }
 }

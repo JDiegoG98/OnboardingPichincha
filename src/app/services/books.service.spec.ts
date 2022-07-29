@@ -116,4 +116,16 @@ describe('BooksService', () => {
     const req = http.expectOne(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE);
     expect(req.request.method).toBe("POST");
   });
+
+  it('should create book on createBook', () => {
+    const bookId = 'test';
+    const mockResponse = mockBooks[0];
+    service.getBookById(bookId).subscribe((res: any) => {
+      expect(res.id).toEqual(mockResponse.id);
+    });
+
+    const req = http.expectOne(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE + `/${bookId}`);
+    expect(req.request.method).toBe("GET");
+    req.flush(mockResponse);
+  });
 });

@@ -23,17 +23,17 @@ export class BooksService {
     return this.http.get<Book[]>(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE, { headers });
   }
 
-  getBookById(id: string) {
+  getBookById(id: string): Observable<Book> {
     const headers = this.getHeaders();
     return this.http.get<Book>(`${environment.apiUrl}${Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE}/${id}`, { headers });
   }
 
-  filterBooks(filters: Filter) {
+  filterBooks(filters: Filter): Observable<any> {
     const headers = this.getHeaders();
     return this.http.post<FilteredBooksResponse>(environment.apiUrl + Endpoints.FILTER_BOOKS, filters, { headers });
   }
 
-  createBook(book: Book) {
+  createBook(book: Book): Observable<any> {
     const headers = this.getHeaders();
     return this.http.post(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE, book, { headers });
   }

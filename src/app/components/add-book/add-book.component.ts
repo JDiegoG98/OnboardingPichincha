@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { Book } from '../../interfaces/book.interface';
 import { BooksService } from '../../services/books.service';
@@ -25,23 +25,25 @@ export class AddBookComponent implements OnInit {
     category: this.fb.group({})
   });
   loading = false;
+  bookToEdit: Book | null = null;
 
   constructor(
     private categoriesService: CategoriesService,
     private fb: FormBuilder,
     private router: Router,
-    private booksService: BooksService
+    private booksService: BooksService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.getCategories();
+    this.getCategoriesAndBook();
   }
 
   get category() { return this.newBookForm.get('category') };
   get url() { return this.newBookForm.get('url') };
   get image() { return this.newBookForm.get('image') };
 
-  async getCategories() {
+  async getCategoriesAndBook() {
     if (this.categoriesService.categories.length == 0) {
       await lastValueFrom(this.categoriesService.getCategories()).then(res => {
         this.categoriesService.categories = res.slice(0, 5);
@@ -64,11 +66,31 @@ export class AddBookComponent implements OnInit {
           validators: [this.checkAtLeastOneSelected()]
         })
     });
+    if (this.route.snapshot.paramMap.get('bookId')) {
+      this.booksService.getBookById(this.route.snapshot.paramMap.get('bookId')!).subscribe({
+        next: res => {
+          this.bookToEdit = res;
+          this.newBookForm.patchValue({
+            title: this.bookToEdit.title,
+            author: this.bookToEdit.author,
+            resume: this.bookToEdit.resume,
+            image: this.bookToEdit.image,
+            url: this.bookToEdit.url,
+            public: this.bookToEdit.public,
+            category: this.bookToEdit.category.reduce((prev, curr) => {
+              const valueObject = {...prev, [curr]: true};
+              return valueObject;
+            }, {})
+          });
+        },
+        error: error => console.error(error)
+      });
+    }
   }
 
-  checkErrorMessage(control: AbstractControl){
+  checkErrorMessage(control: AbstractControl) {
     const controlName = Object.keys(control.parent!.controls).find(name => control === this.newBookForm.get(name));
-    if(control.errors && control.errors['required']){
+    if (control.errors && control.errors['required']) {
       return `${controlName!.charAt(0).toUpperCase() + controlName!.slice(1)} es requerida`;
     }
     return 'URL tiene formato inválido';
