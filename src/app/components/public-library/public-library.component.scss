@@ -1,0 +1,33 @@
+.container{
+  padding: 2% 5%;
+}
+
+.book-section{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  flex: 75%;
+  align-items: center;
+}
+
+.filter-section{
+  flex: 25%;
+  background-color: whitesmoke;
+  margin-left: 5%;
+  padding: 1%;
+}
+
+.row-wrap{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.checkbox{
+  width: 50%;
+}
+
+.input{
+  min-width: 100%;
+}

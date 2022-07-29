@@ -62,7 +62,7 @@ const mockBooks: Book[] = [
 ]
 
 class mockBooksService {
-  books: Book[] = [];
+  userBooks: Book[] = [];
   getBooksByOwner() { return of(mockBooks) }
   filterBooks() { return of(mockBooks) }
 }
@@ -111,7 +111,7 @@ describe('BooksComponent', () => {
 
   it('should getBooks from request and store them', async () => {
     await component.getBooks();
-    expect(booksService.books).toEqual(mockBooks);
+    expect(booksService.userBooks).toEqual(mockBooks);
   });
 
   it('should redirect onAddBook', () => {

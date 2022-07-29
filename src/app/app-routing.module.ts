@@ -8,6 +8,7 @@ import { BooksComponent } from './components/books/books.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { BookInfoComponent } from './components/book-info/book-info.component';
 import { PublicLibraryComponent } from './components/public-library/public-library.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
   {
     path: AppRoutes.LIBRARY,
     component: LibraryComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

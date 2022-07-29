@@ -1,4 +1,3 @@
-import { HttpHeaders } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { environment } from '../../environments/environment';
@@ -55,12 +54,6 @@ describe('BooksService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
-  });
-
-  it('should return auth headers on getHeaders', () => {
-    jest.spyOn(sessionStorage, 'getItem').mockReturnValue('test');
-    const headers = service.getHeaders();
-    expect(headers).toEqual(new HttpHeaders().set('Authorization', 'Bearer test'));
   });
 
   it('should request books by owner on getBooksByOwner', () => {

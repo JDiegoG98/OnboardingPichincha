@@ -10,31 +10,24 @@ import { Filter } from '../interfaces/filter.interface';
   providedIn: 'root'
 })
 export class BooksService {
-  books: Book[] = [];
+  userBooks: Book[] = [];
+  publicBooks: Book[] = [];
 
   constructor(private http: HttpClient) { }
 
-  getHeaders() {
-    return new HttpHeaders().set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-  }
-
   getBooksByOwner(): Observable<Book[]> {
-    const headers = this.getHeaders();
-    return this.http.get<Book[]>(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE, { headers });
+    return this.http.get<Book[]>(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE);
   }
 
   getBookById(id: string): Observable<Book> {
-    const headers = this.getHeaders();
-    return this.http.get<Book>(`${environment.apiUrl}${Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE}/${id}`, { headers });
+    return this.http.get<Book>(`${environment.apiUrl}${Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE}/${id}`);
   }
 
-  filterBooks(filters: Filter): Observable<any> {
-    const headers = this.getHeaders();
-    return this.http.post<FilteredBooksResponse>(environment.apiUrl + Endpoints.FILTER_BOOKS, filters, { headers });
+  filterBooks(filters: Filter): Observable<FilteredBooksResponse> {
+    return this.http.post<FilteredBooksResponse>(environment.apiUrl + Endpoints.FILTER_BOOKS, filters);
   }
 
   createBook(book: Book): Observable<any> {
-    const headers = this.getHeaders();
-    return this.http.post(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE, book, { headers });
+    return this.http.post(environment.apiUrl + Endpoints.GET_BOOKS_BY_OWNER_OR_CREATE, book);
   }
 }

@@ -14,6 +14,7 @@ import { BookVisualizerComponent } from './components/book-visualizer/book-visua
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { BookInfoComponent } from './components/book-info/book-info.component';
 import { PublicLibraryComponent } from './components/public-library/public-library.component';
+import { httpInterceptorProviders } from './interceptors';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { PublicLibraryComponent } from './components/public-library/public-libra
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ httpInterceptorProviders ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

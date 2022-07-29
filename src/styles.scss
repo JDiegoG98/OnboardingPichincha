@@ -11,23 +11,30 @@ body {
   justify-content: center;
 }
 
-.row{
+.row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1%;
 }
 
-.row-left{
+.row-left {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 1%;
 }
 
-.row-right{
+.row-right {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: 1%;
+}
+
+.row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 1%;
 }

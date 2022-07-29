@@ -13,11 +13,11 @@ import { User, UserInfo } from '../interfaces/user.interface';
 })
 export class UsersService {
   loggedUser: UserInfo = {
-    userId: 'default',
-    username: 'default'
+    userId: sessionStorage.getItem('userId')!,
+    username: sessionStorage.getItem('username')!
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   checkUsernameExists(username: string): Observable<ExistsResponse>{
     return this.http.get<ExistsResponse>(environment.apiUrl + Endpoints.CHECK_USERNAME_EXISTS + username);

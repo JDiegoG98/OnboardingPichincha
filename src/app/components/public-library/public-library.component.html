@@ -1,1 +1,43 @@
-<p>public-library works!</p>
+<div class="container">
+  <div class="row">
+    <pichincha-typography variant="h2" weight="bold" color="black">Tus Libros</pichincha-typography>
+  </div>
+  <div class="book-section">
+    <app-book-visualizer *ngFor="let book of userBooks" [imgUrl]="book.image" (click)="onSelectBook(book.id)">
+    </app-book-visualizer>
+  </div>
+  <div class="row">
+    <pichincha-button (click)="onViewMore()" size="small" id="register" color="secondary">
+      Ver más
+    </pichincha-button>
+  </div>
+  <div class="row">
+    <pichincha-typography variant="h2" weight="bold" color="black">Publicaciones</pichincha-typography>
+  </div>
+  <div class="row-top">
+    <div class="book-section">
+      <app-book-visualizer *ngFor="let book of publicBooks" [imgUrl]="book.image" (click)="onSelectBook(book.id)">
+      </app-book-visualizer>
+    </div>
+    <div class="filter-section">
+      <div class="row">
+        <pichincha-input label="Buscar" (ikeyup)="onSearch($any($event))" class="input"
+          placeholder="Búsqueda, Ej: React, Angular" id-element="search" [fullWidth]="true">
+        </pichincha-input>
+      </div>
+      <div class="row">
+        <pichincha-typography variant="h3" weight="bold" color="black">Categorías</pichincha-typography>
+      </div>
+      <div class="row-wrap">
+        <div *ngFor="let category of categoriesList" class="checkbox">
+          <pichincha-check-box (clickCheck)="onClickCheckbox($any($event))" id-element="category-{{category.id}}"
+            disabled="false" value="{{category.id}}">
+            <pichincha-typography variant="bodyText">
+              {{category.description}}
+            </pichincha-typography>
+          </pichincha-check-box>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

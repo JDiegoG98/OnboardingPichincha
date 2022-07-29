@@ -47,12 +47,12 @@ export class BooksComponent implements OnInit {
   }
 
   async getBooks() {
-    if (this.booksService.books.length == 0) {
+    if (this.booksService.userBooks.length == 0) {
       await lastValueFrom(this.booksService.getBooksByOwner()).then(res => {
-        this.booksService.books = res;
+        this.booksService.userBooks = res;
       });
     }
-    this.books = this.booksService.books;
+    this.books = this.booksService.userBooks;
   }
 
   onAddBook() {

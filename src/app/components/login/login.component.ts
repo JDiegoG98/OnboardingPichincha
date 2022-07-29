@@ -50,6 +50,8 @@ export class LoginComponent implements OnInit {
           this.loading = false;
           this.errorMessage = '';
           sessionStorage.setItem('token', res.access_token);
+          sessionStorage.setItem('userId', res.user.userId);
+          sessionStorage.setItem('username', res.user.username);
           this.usersService.loggedUser = res.user;
           this.router.navigateByUrl(AppRoutes.LIBRARY);
         },
